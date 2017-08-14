@@ -3,11 +3,6 @@ import json
 from datetime import date as dt
 import calendar as cl
 
-def get_day(date, month, year):
-    d, m, y = int(date), int(month), int(year)
-    tempDate = dt(y, m, d)
-    dayName = cl.day_name[tempDate.weekday()]
-    return dayName[:3]
 
 
 tracking_number = '744668909687'
@@ -37,6 +32,13 @@ data = requests.post('https://www.fedex.com/trackingCal/track', data={
     'format': 'json',
     'version': 99
 }).json()
+
+def get_day(date, month, year):
+    d, m, y = int(date), int(month), int(year)
+    tempDate = dt(y, m, d)
+    dayName = cl.day_name[tempDate.weekday()]
+    return dayName[:3]
+
 
 packageDetail = data["TrackPackagesResponse"]["packageList"][0]
 mainData = packageDetail["statusWithDetails"]
