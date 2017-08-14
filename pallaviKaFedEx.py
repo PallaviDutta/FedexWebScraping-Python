@@ -5,7 +5,7 @@ import calendar as cl
 
 
 
-tracking_number = '744668909687'
+tracking_number = raw_input("Tracking number :")
 
 data = requests.post('https://www.fedex.com/trackingCal/track', data={
     'data': json.dumps({
